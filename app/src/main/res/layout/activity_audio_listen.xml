@@ -1,18 +1,52 @@
 <!-- activity_audio_listen.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:fitsSystemWindows="true">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="@drawable/app_toolbar_gradient"
         android:elevation="4dp"
-        app:titleTextColor="@android:color/white"/>
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ToolbarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+        app:title="@string/audios_list"
+        app:titleTextColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/playButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Play"
+        android:background="@drawable/button_gradient"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rerunButton"
+        app:layout_constraintHorizontal_weight="1"/>
+
+    <Button
+        android:id="@+id/rerunButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Rerun"
+        android:background="@drawable/button_gradient"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintStart_toEndOf="@+id/playButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"/>
 
     <!-- Your other views here -->
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

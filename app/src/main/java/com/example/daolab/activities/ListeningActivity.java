@@ -28,7 +28,7 @@ public class ListeningActivity extends AppCompatActivity {
         setupToolbar();
 
         cardList = findViewById(R.id.audiosList);
-        AudioListAdapter adapter = new AudioListAdapter(Arrays.asList("Adele", "Fineasz"));
+        AudioListAdapter adapter = new AudioListAdapter(Arrays.asList("Adele", "Phineas and Ferb"));
         cardList.setAdapter(adapter);
         cardList.setLayoutManager(new LinearLayoutManager(this));
         cardList.addItemDecoration(new DividerItemDecoration(cardList.getContext(), DividerItemDecoration.VERTICAL));
