@@ -28,6 +28,10 @@ public class DeckViewModel extends AndroidViewModel {
         return mAllDecks;
     }
 
+    public LiveData<List<Deck>> getDeck(String deckName) {
+        return mRepository.getDeck(deckName);
+    }
+
     public LiveData<List<Card>> getAllCardsOfDeck(String deckName) {
         return mRepository.getAllCardsOfDeck(deckName);
     }

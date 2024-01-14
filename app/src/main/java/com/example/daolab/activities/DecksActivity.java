@@ -10,6 +10,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,6 +23,9 @@ import com.example.daolab.adapters.DeckListAdapter;
 import com.example.daolab.items.Deck;
 import com.example.daolab.models.DeckViewModel;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DecksActivity extends AppCompatActivity {
     Toolbar toolbar;
@@ -64,7 +70,10 @@ public class DecksActivity extends AppCompatActivity {
         deckList.addItemDecoration(new DividerItemDecoration(deckList.getContext(), DividerItemDecoration.VERTICAL));
 
         // Update the cached copy of the words in the adapter.
-        mDeckViewModel.getAllDecks().observe(this, adapter::submitList);
+//        mDeckViewModel.getAllDecks().observe(this, adapter::submitList);
+        LiveData<List<Deck>> alld = mDeckViewModel.getAllDecks();
+        filterByName(alld, "Pub Banter").observe(this, adapter::submitList);
+//        alld.observe(this, adapter::submitList);
 
         // Set up the new deck button.
         newDeckFAB = findViewById(R.id.newDeckFAB);
@@ -85,6 +94,25 @@ public class DecksActivity extends AppCompatActivity {
             builder.setNegativeButton(R.string.button_cancel, (dialog, which) -> dialog.cancel());
 
             builder.show();
+        });
+    }
+
+    private LiveData<List<Deck>> filterByName(LiveData<List<Deck>> originalLiveData, String name) {
+        return Transformations.switchMap(originalLiveData, inputList -> {
+            MutableLiveData<List<Deck>> filteredListLiveData = new MutableLiveData<>();
+
+            // Filter the elements based on the condition (e.g., starts with filterKeyword)
+            List<Deck> filteredList = new ArrayList<>();
+            for (Deck item : inputList) {
+                if (!item.getName().equals(name)) {
+                    filteredList.add(item);
+                }
+            }
+
+            // Update the filtered list in the MutableLiveData
+            filteredListLiveData.setValue(filteredList);
+
+            return filteredListLiveData;
         });
     }
 

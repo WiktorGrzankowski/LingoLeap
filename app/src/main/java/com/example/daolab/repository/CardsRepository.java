@@ -39,6 +39,10 @@ public class CardsRepository {
         return mAllDecks;
     }
 
+    public LiveData<List<Deck>> getDeck(String deckName) {
+        return mDeckDao.getDeck(deckName);
+    }
+
     public LiveData<List<Card>> getAllCardsOfDeck(String deckName) {
         return mDeckDao.getCardsOfDeck(deckName);
     }

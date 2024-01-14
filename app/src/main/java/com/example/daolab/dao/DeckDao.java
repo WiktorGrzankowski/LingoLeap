@@ -22,6 +22,9 @@ public interface DeckDao {
     @Query("SELECT * FROM decks_table")
     LiveData<List<Deck>> getAllDecks();
 
+    @Query("SELECT * FROM decks_table where name = :deckName")
+    LiveData<List<Deck>> getDeck(String deckName);
+
     @Query("SELECT * FROM cards_table WHERE deckName = :deckName")
     LiveData<List<Card>> getCardsOfDeck(String deckName);
 
