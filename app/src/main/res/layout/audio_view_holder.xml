@@ -7,7 +7,7 @@
     android:background="?android:attr/selectableItemBackground">
 
     <TextView
-        android:id="@+id/deckName"
+        android:id="@+id/audioName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -15,27 +15,11 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:scrollHorizontally="true"
-        android:text="@string/deck_name_placeholder"
+        android:text="@string/audio_name_placeholder"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/primaryColor"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/deckCardNumber"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.chip.Chip
-        android:id="@+id/deckCardNumber"
-        style="@style/Widget.MaterialComponents.Chip.Action"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:clickable="false"
-        android:fontFamily="@font/plus_jakarta_sans"
-        android:text="@string/card_number_placeholder"
-        android:textColor="#616161"
-        app:chipIcon="@drawable/ic_baseline_deck_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextContrastCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

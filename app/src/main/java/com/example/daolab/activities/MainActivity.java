@@ -32,5 +32,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
+
+
+        ConstraintLayout buttonLayout2 = findViewById(R.id.buttonLayoutListening);
+        buttonLayout2.setClickable(true);
+        buttonLayout2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ListeningActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

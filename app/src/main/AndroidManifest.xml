@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <application
         android:allowBackup="true"
@@ -10,24 +10,30 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Daolab"
-        tools:targetApi="31">
+        tools:targetApi="31" >
         <activity
-            android:name="com.example.daolab.activities.LearningActivity"
+            android:name=".activities.ListeningActivity"
             android:exported="false"
-            android:parentActivityName="com.example.daolab.activities.DeckActivity" />
+            android:label="@string/title_activity_listening"
+            android:theme="@style/Theme.Daolab" />
         <activity
-            android:name="com.example.daolab.activities.DeckActivity"
+            android:name=".activities.LearningActivity"
             android:exported="false"
-            android:parentActivityName="com.example.daolab.activities.DecksActivity" />
+            android:parentActivityName=".activities.DeckActivity" />
         <activity
-            android:name="com.example.daolab.activities.DecksActivity"
+            android:name=".activities.DeckActivity"
             android:exported="false"
-            android:parentActivityName="com.example.daolab.activities.MainActivity" />
+            android:parentActivityName=".activities.DecksActivity" />
         <activity
-            android:name="com.example.daolab.activities.MainActivity"
-            android:exported="true">
+            android:name=".activities.DecksActivity"
+            android:exported="false"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -96,7 +96,7 @@ public class DeckActivity extends AppCompatActivity {
         }
 
         // Set up the card list.
-        cardList = findViewById(R.id.cardList);
+        cardList = findViewById(R.id.audiosList);
         mDeckViewModel = new ViewModelProvider(this).get(DeckViewModel.class);
         final CardListAdapter adapter = new CardListAdapter(new CardListAdapter.CardDiff(), this, mDeckViewModel);
         cardList.setAdapter(adapter);
