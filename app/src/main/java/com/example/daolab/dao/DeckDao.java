@@ -37,4 +37,7 @@ public interface DeckDao {
 
     @Query("SELECT COUNT(*) FROM decks_table WHERE name = :deckName")
     int deckExists(String deckName);
+
+    @Query("SELECT COUNT(*) FROM cards_table WHERE question = :cardQuestion")
+    int cardExists(String cardQuestion);
 }

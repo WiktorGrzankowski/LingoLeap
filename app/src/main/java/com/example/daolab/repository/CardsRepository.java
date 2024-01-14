@@ -17,6 +17,7 @@ import java.util.concurrent.ExecutionException;
 
 public class CardsRepository {
     private static final int DECK_ALREADY_EXISTS = -1;
+    private static final int CARD_ALREADY_EXISTS = -1;
 
     private final CardDao mCardDao;
     private final DeckDao mDeckDao;
@@ -77,6 +78,19 @@ public class CardsRepository {
         return deckExistsHelper(deckName) > 0;
     }
 
+    public boolean cardExists(String cardQuestion) {
+        return cardExistsHelper(cardQuestion) > 0;
+    }
+
+    Integer cardExistsHelper(String cardQuestion) {
+        try {
+            return new CardExistsTask(mDeckDao, cardQuestion).execute().get();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     Integer deckExistsHelper(String deckName) {
         try {
             return new DeckExistsTask(mDeckDao, deckName).execute().get();
@@ -117,6 +131,9 @@ public class CardsRepository {
     }
 
     public long insertCard(Card card) {
+        if (cardExists(card.getQuestion())) {
+            return CARD_ALREADY_EXISTS;
+        }
         try {
             return new InsertCardTask(mCardDao, card).execute().get();
         } catch (ExecutionException | InterruptedException e) {
@@ -162,6 +179,22 @@ public class CardsRepository {
         @Override
         protected Integer doInBackground(Void... notes) {
             return deckDao.deckExists(deckName);
+        }
+    }
+
+    private static class CardExistsTask extends AsyncTask<Void, Void, Integer> {
+        final DeckDao deckDao;
+        final String cardName;
+
+        public CardExistsTask(DeckDao deckDao, String deckName) {
+            super();
+            this.deckDao = deckDao;
+            this.cardName = deckName;
+        }
+
+        @Override
+        protected Integer doInBackground(Void... notes) {
+            return deckDao.cardExists(cardName);
         }
     }
 

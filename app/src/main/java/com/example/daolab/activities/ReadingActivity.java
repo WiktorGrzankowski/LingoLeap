@@ -11,39 +11,30 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.daolab.R;
+import com.example.daolab.adapters.AudioListAdapter;
 import com.example.daolab.adapters.DeckListAdapter;
 import com.example.daolab.items.Card;
 import com.example.daolab.items.Deck;
 import com.example.daolab.items.Difficulty;
 import com.example.daolab.models.DeckViewModel;
 
+import java.util.Arrays;
 import java.util.Objects;
 
-public class VocabularyActivity extends AppCompatActivity {
+public class ReadingActivity extends AppCompatActivity {
     Toolbar toolbar;
-    RecyclerView deckList;
-    private DeckViewModel mDeckViewModel;
-    private DeckListAdapter adapter;
+    RecyclerView audios;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vocabulary);
+        setContentView(R.layout.activity_reading);
         setupToolbar();
 
-        mDeckViewModel = new ViewModelProvider(this).get(DeckViewModel.class);
-        // Insert hardcoded Deck.
-        mDeckViewModel.insert(new Deck("Pub Banter"));
-        mDeckViewModel.insert(new Card("Bob's your uncle", "Something easy to achieve. Example: Once you overcome the fear, Bob's your uncle!",
-                Difficulty.MEDIUM, "Pub Banter"));
-        mDeckViewModel.insert(new Card("The bee's knees", "Something of high quality. Example: That's a great bloody pint of ale! The bee's knees!",
-                Difficulty.EASY, "Pub Banter"));
-        deckList = findViewById(R.id.vocabTopics);
-        adapter = new DeckListAdapter(new DeckListAdapter.DeckDiff(), mDeckViewModel);
-        deckList.setAdapter(adapter);
-        deckList.setLayoutManager(new LinearLayoutManager(this));
-        deckList.addItemDecoration(new DividerItemDecoration(deckList.getContext(), DividerItemDecoration.VERTICAL));
-        // Currently, just for MVP, one deck for vocabulary.
-        mDeckViewModel.getDeck("Pub Banter").observe(this, adapter::submitList);
+        audios = findViewById(R.id.audiosList);
+        AudioListAdapter adapter = new AudioListAdapter(Arrays.asList("Man Utd fans", "Arsenal fans"));
+        audios.setAdapter(adapter);
+        audios.setLayoutManager(new LinearLayoutManager(this));
+        audios.addItemDecoration(new DividerItemDecoration(audios.getContext(), DividerItemDecoration.VERTICAL));
     }
 
     private void setupToolbar() {

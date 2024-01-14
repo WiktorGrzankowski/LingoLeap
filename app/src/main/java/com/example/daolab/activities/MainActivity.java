@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setUpButton(R.id.buttonLayoutFlashcards, DecksActivity.class);
         setUpButton(R.id.buttonLayoutListening, ListeningActivity.class);
         setUpButton(R.id.buttonLayoutVocabulary, VocabularyActivity.class);
+        setUpButton(R.id.buttonLayoutReading, ReadingActivity.class);
     }
 
     private void setUpButton(int layoutId, final Class<?> activityToStart) {
