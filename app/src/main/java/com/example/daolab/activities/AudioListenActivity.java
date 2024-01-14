@@ -15,6 +15,10 @@ import com.example.daolab.R;
 import java.util.Arrays;
 import java.util.List;
 
+import nl.dionsegijn.konfetti.KonfettiView;
+import nl.dionsegijn.konfetti.models.Shape;
+import nl.dionsegijn.konfetti.models.Size;
+
 public class AudioListenActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
@@ -114,6 +118,7 @@ public class AudioListenActivity extends AppCompatActivity {
     private void checkAnswer(Button selectedButton) {
         if (selectedButton.getId() == correctAnswer) {
             selectedButton.setBackgroundColor(Color.GREEN);
+            showFireworks();
         } else {
             selectedButton.setBackgroundColor(Color.RED);
         }
@@ -147,5 +152,18 @@ public class AudioListenActivity extends AppCompatActivity {
             mediaPlayer.release();
             mediaPlayer = null;
         }
+    }
+    private void showFireworks() {
+        KonfettiView konfettiView = findViewById(R.id.viewKonfetti);
+        konfettiView.build()
+                .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+                .setDirection(0.0, 359.0)
+                .setSpeed(1f, 5f)
+                .setFadeOutEnabled(true)
+                .setTimeToLive(2000L)
+                .addShapes(Shape.RECT, Shape.CIRCLE)
+                .addSizes(new Size(12, 5f))
+                .setPosition(-50f, konfettiView.getWidth() + 50f, -50f, -50f)
+                .streamFor(300, 5000L);
     }
 }
