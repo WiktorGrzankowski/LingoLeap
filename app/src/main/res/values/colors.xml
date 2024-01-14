@@ -1,0 +1,26 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<resources>
+    <color name="primaryColor">#678C42</color>
+    <color name="primaryLightColor">#BCE591</color>
+    <color name="primaryDarkColor">#3E5428</color>
+    <color name="secondaryColor">#F5C262</color>
+    <color name="secondaryLightColor">#F4D79B</color>
+    <color name="secondaryDarkColor">#A88543</color>
+    <color name="tertiaryColor">#8C3B77</color>
+    <color name="tertiaryLightColor">#D192C0</color>
+    <color name="tertiaryDarkColor">#622953</color>
+    <color name="quaternaryColor">#F2845C</color>
+    <color name="quaternaryLightColor">#F8C1AD</color>
+    <color name="quaternaryDarkColor">#D94611</color>
+    <color name="quinaryColor">#A67165</color>
+    <color name="quinaryLightColor">#D2B8B2</color>
+    <color name="quinaryDarkColor">#764E44</color>
+    <color name="senaryColor">#296B73</color>
+    <color name="senaryLightColor">#62BCC7</color>
+    <color name="senaryDarkColor">#194045</color>
+    <color name="septenaryColor">#B6B6B6</color>
+    <color name="septenaryLightColor">#DADADA</color>
+    <color name="septenaryDarkColor">#6D6D6D</color>
+    <color name="primaryTextColor">#000000</color>
+    <color name="secondaryTextColor">#FFFFFF</color>
+</resources>

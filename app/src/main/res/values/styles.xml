@@ -1,0 +1,56 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorAccent">@color/secondaryColor</item>
+    </style>
+
+    <!-- Toolbar theme. -->
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">@font/plus_jakarta_sans_bold</item>
+    </style>
+
+    <!-- Custom font family. -->
+    <style name="Headline1TextTheme" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/plus_jakarta_sans_light</item>
+        <item name="android:textSize">34sp</item>
+    </style>
+
+    <style name="Headline2TextTheme" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/plus_jakarta_sans_bold</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="Headline3TextTheme" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TitleTextTheme" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/plus_jakarta_sans_bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="SubtitleTextTheme" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="BodyTextTheme" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- Buttons font family. -->
+    <style name="ButtonTheme" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:fontFamily">@font/plus_jakarta_sans_bold</item>
+    </style>
+
+    <!-- Slider tooltip theme. -->
+    <style name="SliderTooltipTheme" parent="Widget.MaterialComponents.Tooltip">
+        <item name="backgroundTint">@color/primaryLightColor</item>
+    </style>
+
+</resources>
