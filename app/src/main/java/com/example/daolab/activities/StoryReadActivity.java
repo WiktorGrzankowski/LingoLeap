@@ -1,7 +1,6 @@
 package com.example.daolab.activities;
 
 import android.graphics.Color;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,81 +18,49 @@ import nl.dionsegijn.konfetti.KonfettiView;
 import nl.dionsegijn.konfetti.models.Shape;
 import nl.dionsegijn.konfetti.models.Size;
 
-public class AudioListenActivity extends AppCompatActivity {
+public class StoryReadActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     int audioResId;
     private String question;
     private List<String> answers;
-    private String audioName;
+    private String storyName;
     int correctAnswer;
-    private MediaPlayer mediaPlayer;
-    private Button playButton;
 
     private Button answerButton1, answerButton2, answerButton3, answerButton4;
-    private Button rerunButton;
     private boolean isPlaying = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_audio_listen);
+        setContentView(R.layout.activity_read_story);
 
-        audioName = getIntent().getStringExtra("AUDIO_NAME");
+        storyName = getIntent().getStringExtra("STORY_NAME");
 
         // Set up the toolbar.
         toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(audioName);
+        toolbar.setTitle(storyName);
         setSupportActionBar(toolbar);
 
         // Initialize MediaPlayer
-        switch (audioName) {
-            case "Adele":
-                audioResId = R.raw.audio_adele;
-                question = "What did Adele do the second time after she met Beyonce?";
-                answers = Arrays.asList("She kept her cool all the time", "She was getting her makeup done",
-                        "She thanked her for her work", "She tore apart outside the building");
-                correctAnswer = R.id.answerButton4;
-                break;
-            case "Phineas and Ferb":
-                audioResId = R.raw.audio_phineas;
-                question = "What did Perry the Platypus say?";
-                answers = Arrays.asList("Let's build a roller-coaster", "I'm a secret agent",
-                        "I lay eggs despite being a mammal", "Nothing");
-                correctAnswer = R.id.answerButton3;
-                break;
+        switch (storyName) {
             default:
                 audioResId = R.raw.audio_adele;
+                question = "Oi mate, did ya catch the footy match last night? It was a proper belter!" +
+                        " The Reds were up against the Blues. The Reds' striker, a real nifty lad, was on fire. " +
+                        "He nutmegged one bloke, then another, and banged in a screamer from 20 yards out. The crowd went mental!" +
+                        " But, in the last tick, the Blues' winger, who’d been a right ghost all game, " +
+                        "whipped in a peach of a cross and their striker nodded it in. Ended in a 1-all draw. Proper gutted, I was!" +
+                        "\nQuestion: Which remarkable feat did the Reds' striker achieve during the match?";
+                answers = Arrays.asList("Scored a hat-trick", "Had an affair with the journalist from Sky",
+                        "Threaded two defenders and scored a worldie", "Scored an own goal");
+                correctAnswer = R.id.answerButton3;
         }
 
         TextView questionText = findViewById(R.id.questionText);
         questionText.setText(question);
 
 
-
-        mediaPlayer = MediaPlayer.create(this, audioResId);
-
-        // Set up the play button
-        playButton = findViewById(R.id.playButton);
-        playButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isPlaying) {
-                    pauseAudio();
-                } else {
-                    startAudio();
-                }
-            }
-        });
-
-        // Set up the rerun button
-        rerunButton = findViewById(R.id.rerunButton);
-        rerunButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rerunAudio();
-            }
-        });
         answerButton1 = findViewById(R.id.answerButton1);
         answerButton1.setText(answers.get(0));
         answerButton2 = findViewById(R.id.answerButton2);
@@ -124,35 +91,6 @@ public class AudioListenActivity extends AppCompatActivity {
         }
     }
 
-    private void startAudio() {
-        mediaPlayer.start();
-        isPlaying = true;
-        playButton.setText("Pause");
-    }
-
-    private void pauseAudio() {
-        mediaPlayer.pause();
-        isPlaying = false;
-        playButton.setText("Play");
-    }
-
-    private void rerunAudio() {
-        if (mediaPlayer.isPlaying()) {
-            mediaPlayer.stop();
-        }
-        mediaPlayer.reset();
-        mediaPlayer = MediaPlayer.create(this, audioResId);
-        mediaPlayer.start();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (mediaPlayer != null) {
-            mediaPlayer.release();
-            mediaPlayer = null;
-        }
-    }
     private void showFireworks() {
         KonfettiView konfettiView = findViewById(R.id.viewKonfetti);
         konfettiView.build()
