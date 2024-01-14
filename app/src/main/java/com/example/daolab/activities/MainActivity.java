@@ -23,28 +23,20 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(materialToolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
-        ConstraintLayout buttonLayout = findViewById(R.id.buttonLayoutFlashcards);
+        setUpButton(R.id.buttonLayoutFlashcards, DecksActivity.class);
+        setUpButton(R.id.buttonLayoutListening, ListeningActivity.class);
+    }
+
+    private void setUpButton(int layoutId, final Class<?> activityToStart) {
+        ConstraintLayout buttonLayout = findViewById(layoutId);
         buttonLayout.setClickable(true);
         buttonLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, DecksActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-
-
-
-        ConstraintLayout buttonLayout2 = findViewById(R.id.buttonLayoutListening);
-        buttonLayout2.setClickable(true);
-        buttonLayout2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ListeningActivity.class);
+                Intent intent = new Intent(MainActivity.this, activityToStart);
                 startActivity(intent);
             }
         });
     }
+
 }

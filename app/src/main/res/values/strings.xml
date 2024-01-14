@@ -49,8 +49,10 @@
     <string name="writing">Writing</string>
     <string name="audios_list">Audios list</string>
     <string name="audio_name_placeholder">Audio name</string>
+    <string name="vocab_topic_placeholder">Vocab topic</string>
     <string name="title_activity_listening">ListeningActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
+    <string name="vocabulary_topics">Vocabulary topics</string>
 </resources>

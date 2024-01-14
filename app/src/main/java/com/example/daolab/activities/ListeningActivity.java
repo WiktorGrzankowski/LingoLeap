@@ -5,34 +5,30 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.daolab.R;
 import com.example.daolab.adapters.AudioListAdapter;
-import com.example.daolab.models.DeckViewModel;
 
 import java.util.Arrays;
 import java.util.Objects;
 
 public class ListeningActivity extends AppCompatActivity {
     Toolbar toolbar;
-    RecyclerView cardList;
-//    private DeckViewModel mDeckViewModel;
+    RecyclerView audios;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listening_all);
         setupToolbar();
 
-        cardList = findViewById(R.id.audiosList);
+        audios = findViewById(R.id.audiosList);
         AudioListAdapter adapter = new AudioListAdapter(Arrays.asList("Adele", "Phineas and Ferb"));
-        cardList.setAdapter(adapter);
-        cardList.setLayoutManager(new LinearLayoutManager(this));
-        cardList.addItemDecoration(new DividerItemDecoration(cardList.getContext(), DividerItemDecoration.VERTICAL));
-        //        mDeckViewModel = new ViewModelProvider(this).get(DeckViewModel.class);
+        audios.setAdapter(adapter);
+        audios.setLayoutManager(new LinearLayoutManager(this));
+        audios.addItemDecoration(new DividerItemDecoration(audios.getContext(), DividerItemDecoration.VERTICAL));
     }
 
     private void setupToolbar() {

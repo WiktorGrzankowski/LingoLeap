@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.daolab.R;
 import com.example.daolab.activities.AudioListenActivity;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
 public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.ViewHolder> {
@@ -42,7 +41,6 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.View
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("COS SIE STALO", "item clickeeed " + name);
                 Context context = v.getContext();
                 Intent intent = new Intent(context, AudioListenActivity.class);
                 intent.putExtra("AUDIO_NAME", name);
