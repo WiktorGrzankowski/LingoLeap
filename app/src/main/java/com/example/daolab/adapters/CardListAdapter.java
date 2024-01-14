@@ -1,5 +1,6 @@
 package com.example.daolab.adapters;
 
+import android.util.Log;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,7 @@ public class CardListAdapter extends ListAdapter<Card, CardViewHolder> {
 
     @Override
     public void onBindViewHolder(CardViewHolder holder, int position) {
+        Log.d("COS SIE STALO", "item clickeeed " + String.valueOf(position));
         Card current = getItem(position);
         holder.bind(current.getId(), current.getQuestion(), current.getAnswer(),
                 current.getDifficulty(), deckViewModel);

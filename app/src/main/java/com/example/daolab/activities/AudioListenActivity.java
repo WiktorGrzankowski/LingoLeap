@@ -1,6 +1,7 @@
 package com.example.daolab.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,27 +18,18 @@ import java.util.Objects;
 
 public class AudioListenActivity extends AppCompatActivity {
     Toolbar toolbar;
-//    RecyclerView cardList;
-    //    private DeckViewModel mDeckViewModel;
+    private String audioName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.audio_listen_activity);
-        setupToolbar();
-        //        mDeckViewModel = new ViewModelProvider(this).get(DeckViewModel.class);
-    }
+        setContentView(R.layout.activity_deck);
 
-    private void setupToolbar() {
+        audioName = getIntent().getExtras().getString("AUDIO_NAME");
+
         // Set up the toolbar.
         toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(audioName);
         setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed(); // Handle the back button press
-            }
-        });
     }
 }
+

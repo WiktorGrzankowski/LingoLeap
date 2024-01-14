@@ -25,6 +25,10 @@
             android:exported="false"
             android:parentActivityName=".activities.DecksActivity" />
         <activity
+            android:name=".activities.AudioListenActivity"
+            android:exported="false"
+            android:parentActivityName=".activities.ListeningActivity" />
+        <activity
             android:name=".activities.DecksActivity"
             android:exported="false"
             android:parentActivityName=".activities.MainActivity" />
